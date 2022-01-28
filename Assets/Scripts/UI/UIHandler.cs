@@ -77,4 +77,9 @@ public class UIHandler : MonoBehaviour
 
         g.SetActive(false);
 	}
+
+    public bool GetCharacterMovement()
+	{
+        return currentMenu.allowPlayerMovement;
+	}
 }
