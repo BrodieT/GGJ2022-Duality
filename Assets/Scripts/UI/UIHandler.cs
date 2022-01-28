@@ -31,10 +31,11 @@ public class UIHandler : MonoBehaviour
 
         foreach (MenuData d in allMenus)
         {
+            d.menuObj.SetActive(false);
+
             if (d.menu == startingMenu)
             {
                 currentMenu = d;
-                break;
             }
         }
 
@@ -47,14 +48,20 @@ public class UIHandler : MonoBehaviour
 		{
             if(d.menu == m)
 			{
-                previousMenu = currentMenu;
-                HideCurrentMenu(previousMenu.menuObj);
+                if (currentMenu.menu != m)
+                {
+                    StartCoroutine(HideCurrentMenu(currentMenu.menuObj));
+                }
+
                 d.menuObj.SetActive(true);
                 currentMenu = d;
+
                 break;
 			}
 		}
-	}
+
+        previousMenu = currentMenu;
+    }
 
     IEnumerator HideCurrentMenu(GameObject g)
 	{
