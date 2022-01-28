@@ -5,7 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class MenuData
 {
-    public enum Menus { MAINMENU, SETTINGS, CONTROLS, GAMEUI, CREDITS, WIN, LEVELSELECT}
+    public enum Menus { MAINMENU, SETTINGS, CONTROLS, GAMEUI, CREDITS, WIN, LEVELSELECT, PAUSE, BACK}
     public Menus menu = default;
     public GameObject menuObj = default;
     public bool allowPlayerMovement = false;
@@ -44,7 +44,9 @@ public class UIHandler : MonoBehaviour
 
     public void SwitchMenu(MenuData.Menus m)
 	{
-        foreach(MenuData d in allMenus)
+        previousMenu = currentMenu;
+
+        foreach (MenuData d in allMenus)
 		{
             if(d.menu == m)
 			{
@@ -59,8 +61,6 @@ public class UIHandler : MonoBehaviour
                 break;
 			}
 		}
-
-        previousMenu = currentMenu;
     }
 
     IEnumerator HideCurrentMenu(GameObject g)
@@ -76,6 +76,11 @@ public class UIHandler : MonoBehaviour
 		}
 
         g.SetActive(false);
+	}
+
+    public void GoBackAMenu()
+	{
+        SwitchMenu(previousMenu.menu);
 	}
 
     public bool GetCharacterMovement()

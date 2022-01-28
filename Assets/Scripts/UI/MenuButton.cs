@@ -12,6 +12,14 @@ public class MenuButton : MonoBehaviour
     void Start()
     {
         Button bttn = GetComponent<Button>();
-        bttn.onClick.AddListener(delegate { UIHandler.Instance.SwitchMenu(menu); });
+
+        if (menu == MenuData.Menus.BACK)
+        {
+            bttn.onClick.AddListener(delegate { UIHandler.Instance.GoBackAMenu(); });
+        }
+        else
+        {
+            bttn.onClick.AddListener(delegate { UIHandler.Instance.SwitchMenu(menu); });
+        }
     }
 }
