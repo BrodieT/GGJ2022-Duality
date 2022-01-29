@@ -5,6 +5,13 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Character Settings", menuName = "Character Settings", order = 0)]
 public class CharacterSettings : ScriptableObject
 {
+    [Header("Character Settings")]
+    [SerializeField, Tooltip("Determines which of the two character types this is")]
+    public CharacterType characterType = 0;
+
+
+
+
     [Header("Movement Settings")]
     [SerializeField, Tooltip("How fast the character will move left/right"), Min(0)]
     public float characterMoveSpeed = 5.0f;
@@ -48,3 +55,6 @@ public class CharacterSettings : ScriptableObject
     [SerializeField, Tooltip("How much weight this character can move"), Range(0, 3)]
     public int weightThreshold = 0;
 }
+
+[System.Serializable]
+public enum CharacterType { Buff = 0, Smol = 1}

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bd29418b5023434689cd80ffc64d0cb, type: 3}
   m_Name: Smol
   m_EditorClassIdentifier: 
+  characterType: 1
   characterMoveSpeed: 5
   gravityScale: 2
   feetPosition: {x: 0, y: 0.4, z: 0}

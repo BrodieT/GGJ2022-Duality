@@ -211,4 +211,8 @@ public class ControllableCharacter : MonoBehaviour
     }
 
 
+    public CharacterType GetCharacterType()
+    {
+        return settings.characterType;
+    }
 }
