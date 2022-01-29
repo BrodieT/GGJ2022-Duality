@@ -15,7 +15,10 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (CharacterSwapParticles.Instance != null)
+        {
+            CharacterSwapParticles.Instance.SetParticleStartingPoint(controllableCharacters[currentCharacter].transform.position);
+        }
     }
 
     // Update is called once per frame
@@ -54,6 +57,11 @@ public class PlayerController : MonoBehaviour
         if(currentCharacter >= controllableCharacters.Count)
         {
             currentCharacter = 0;
+        }
+
+        if (CharacterSwapParticles.Instance != null)
+        {
+            StartCoroutine(CharacterSwapParticles.Instance.SwapCharacter(controllableCharacters[currentCharacter].transform));
         }
     }
 

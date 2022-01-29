@@ -24,6 +24,8 @@ public class UIHandler : MonoBehaviour
     [SerializeField]
     private MenuData.Menus startingMenu = default;
 
+    private bool switchingMenu = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -61,10 +63,17 @@ public class UIHandler : MonoBehaviour
                 break;
 			}
 		}
+
+        if (AudioHandler.Instance != null)
+        {
+            AudioHandler.Instance.PlayButtonHover();
+        }
     }
 
     IEnumerator HideCurrentMenu(GameObject g)
 	{
+        switchingMenu = true;
+
         float time = 1f;
 
         g.GetComponent<Animator>().SetTrigger("MenuHide");
@@ -76,6 +85,13 @@ public class UIHandler : MonoBehaviour
 		}
 
         g.SetActive(false);
+        switchingMenu = false;
+
+	}
+
+    public bool GetSwitchingMenu()
+	{
+        return switchingMenu;
 	}
 
     public void GoBackAMenu()
