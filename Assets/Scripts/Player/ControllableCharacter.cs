@@ -15,9 +15,15 @@ public class ControllableCharacter : MonoBehaviour
     [SerializeField, Tooltip("The audio source used for playing character SFX")]
     private AudioSource audioSource = default;
 
-    private Rigidbody2D rb = default;
-    private Collider2D col = default;
+    private Rigidbody2D rb = default; //Local cache of rigidbody component
+    private Collider2D col = default; //Local cache of collider component
+    
+    private float groundedMemoryTimer = 0.0f; //The timer tracking whether the player was recently grounded
+    private float jumpPressMemoryTimer = 0.0f; //The timer tracking if the jump button was recently pressed
 
+    private bool isGrounded = false; //Tracks whether the character is touching the ground or not
+    private bool prevIsGrounded = false; //Remembers the grounded state from the previous frame
+    private bool isJumping = false; //Tracks whether the character is in the process of a jump - determines the difference between a jump & walking off a ledge
 
 
     // Start is called before the first frame update
@@ -32,15 +38,11 @@ public class ControllableCharacter : MonoBehaviour
         //Cache the rigidbody and colliders - safe to use GetComponent as they are required by this script
         rb = GetComponent<Rigidbody2D>();
         col = GetComponent<Collider2D>();
+
+        rb.gravityScale = settings.gravityScale;
     }
 
-    private float groundedMemoryTimer = 0.0f; //The timer tracking whether the player was recently grounded
-    private float jumpPressMemoryTimer = 0.0f; //The timer tracking if the jump button was recently pressed
-
-    private bool isGrounded = false; //Tracks whether the character is touching the ground or not
-    private bool prevIsGrounded = false; //Remembers the grounded state from the previous frame
-    private bool isJumping = false; //Tracks whether the character is in the process of a jump - determines the difference between a jump & walking off a ledge
-
+  
 
     private void Update()
     {

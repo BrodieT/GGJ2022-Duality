@@ -9,7 +9,7 @@ public class CharacterSettings : ScriptableObject
     [SerializeField, Tooltip("How fast the character will move left/right"), Min(0)]
     public float characterMoveSpeed = 5.0f;
     [SerializeField, Tooltip("How fast the character will fall due to gravity")]
-    public float gravityAmount = -9.8f;
+    public float gravityScale = 1;
     [SerializeField, Tooltip("The position of the character's feet relative to their transform")]
     public Vector3 feetPosition = new Vector3(0, -0.25f);
     [SerializeField, Tooltip("The radius around the character's feet that we will check for ground")]
@@ -39,6 +39,12 @@ public class CharacterSettings : ScriptableObject
     public string fallAnim = "Fall";
 
     [Header("Audio Settings")]
+    [SerializeField, Tooltip("The list of possible footstep sfx played when the character walks")]
+    public List<AudioClip> footsteppSFX = new List<AudioClip>();
     [SerializeField, Tooltip("The sfx played when the character lands")]
     public AudioClip landSFX = default;
+
+    [Header("Hazard Settings")]
+    [SerializeField, Tooltip("How much weight this character can move"), Range(0, 3)]
+    public int weightThreshold = 0;
 }
