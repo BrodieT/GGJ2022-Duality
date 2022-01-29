@@ -23,10 +23,10 @@ MonoBehaviour:
   groundCheckRememberTime: 0.5
   jumpPressRememberTime: 0.25
   flipSprites: 1
-  walkAnim: 
+  walkAnim: Walk
   jumpAnim: 
   landAnim: 
-  fallAnim: 
+  fallAnim: Fall
   footsteppSFX: []
   landSFX: {fileID: 0}
   weightThreshold: 1
