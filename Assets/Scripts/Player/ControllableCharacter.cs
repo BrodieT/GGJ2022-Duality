@@ -29,6 +29,8 @@ public class ControllableCharacter : MonoBehaviour
 
     private Vector2 externalForce = new Vector2();
 
+    private bool isMoving = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -194,7 +196,9 @@ public class ControllableCharacter : MonoBehaviour
         {
             rb.velocity = new Vector2(direction * settings.characterMoveSpeed, rb.velocity.y) + externalForce;
         }
+
         externalForce = Vector2.zero;
+
     }
 
    
@@ -226,9 +230,23 @@ public class ControllableCharacter : MonoBehaviour
             Gizmos.DrawWireSphere(transform.position + settings.feetPosition, settings.groundCheckRadius);
     }
 
+    public CharacterSettings GetSettings()
+	{
+        return settings;
+	}
 
     public CharacterType GetCharacterType()
     {
         return settings.characterType;
     }
+
+    public void SetIsMoving(bool set)
+	{
+        isMoving = set;
+	}
+
+    public bool GetIfMoving()
+	{
+        return isMoving;
+	}
 }

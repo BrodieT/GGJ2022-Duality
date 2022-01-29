@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
+using UnityEngine.UI;
 
 [System.Serializable]
 public class MenuData
@@ -23,6 +25,21 @@ public class UIHandler : MonoBehaviour
 
     [SerializeField]
     private MenuData.Menus startingMenu = default;
+
+    private bool switchingMenu = false;
+
+
+    [SerializeField]
+    private AudioMixer mixer = default;
+
+    [SerializeField]
+    private Slider masterSlider = default;
+
+    [SerializeField]
+    private Slider effectsSlider = default;
+
+    [SerializeField]
+    private Slider UISlider = default;
 
     // Start is called before the first frame update
     void Start()
@@ -61,10 +78,17 @@ public class UIHandler : MonoBehaviour
                 break;
 			}
 		}
+
+        if (AudioHandler.Instance != null)
+        {
+            AudioHandler.Instance.PlayButtonHover();
+        }
     }
 
     IEnumerator HideCurrentMenu(GameObject g)
 	{
+        switchingMenu = true;
+
         float time = 1f;
 
         g.GetComponent<Animator>().SetTrigger("MenuHide");
@@ -76,6 +100,13 @@ public class UIHandler : MonoBehaviour
 		}
 
         g.SetActive(false);
+        switchingMenu = false;
+
+	}
+
+    public bool GetSwitchingMenu()
+	{
+        return switchingMenu;
 	}
 
     public void GoBackAMenu()
@@ -87,4 +118,19 @@ public class UIHandler : MonoBehaviour
 	{
         return currentMenu.allowPlayerMovement;
 	}
+
+    public void UpdateMasterVolume()
+	{
+        mixer.SetFloat("MasterVolume", masterSlider.value);
+	}
+
+    public void UpdateEffectsVolume()
+    {
+        mixer.SetFloat("EffectsVolume", effectsSlider.value);
+    }
+
+    public void UpdateUIVolume()
+    {
+        mixer.SetFloat("UIVolume", UISlider.value);
+    }
 }
