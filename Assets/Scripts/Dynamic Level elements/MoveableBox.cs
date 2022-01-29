@@ -62,8 +62,9 @@ public class MoveableBox : MonoBehaviour
 		}
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
+
+	private void OnTriggerEnter2D(Collider2D collision)
+	{
         ControllableCharacter character = default;
         collision.transform.TryGetComponent<ControllableCharacter>(out character);
 
@@ -85,8 +86,8 @@ public class MoveableBox : MonoBehaviour
         }
     }
 
-    private void OnCollisionExit2D(Collision2D collision)
-    {
+	private void OnTriggerExit2D(Collider2D collision)
+	{
         ControllableCharacter character = default;
         collision.transform.TryGetComponent<ControllableCharacter>(out character);
 
@@ -98,4 +99,5 @@ public class MoveableBox : MonoBehaviour
             }
         }
     }
+	
 }
