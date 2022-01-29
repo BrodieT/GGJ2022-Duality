@@ -15,6 +15,8 @@ public class MoveableBox : MonoBehaviour
 
     [SerializeField]
     private Rigidbody2D rb = default;
+
+    private bool isPushing = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,17 +26,22 @@ public class MoveableBox : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if(rb.velocity == Vector2.zero && !isPushing)
+		{
+            StopPushingSound();
+		}
     }
 
     public void PlayPushingSound()
     {
+        Debug.Log("PLAYING");
+
         source.loop = true;
         source.clip = clip;
         source.Play();
     }
 
-    public void StopPushingSpund()
+    public void StopPushingSound()
     {
         source.Stop();
     }
@@ -45,6 +52,9 @@ public class MoveableBox : MonoBehaviour
         {
             rb.constraints = RigidbodyConstraints2D.None;
             rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+
+
+            PlayPushingSound();
         }
 		else
 		{
@@ -61,14 +71,30 @@ public class MoveableBox : MonoBehaviour
         {
             if (character.GetIfMoving())
             {
-                if (character.GetSettings().weightThreshold >= entity.weight)
+                if (character.GetSettings().weightThreshold >= entity.weight && !isPushing)
                 {
                     AllowPushing(true);
+                    isPushing = true;
                 }
                 else
                 {
                     AllowPushing(false);
+                    isPushing = false;
                 }
+            }
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        ControllableCharacter character = default;
+        collision.transform.TryGetComponent<ControllableCharacter>(out character);
+
+        if (character != null)
+        {
+            if (character.GetIfMoving())
+            {
+                StopPushingSound();
             }
         }
     }

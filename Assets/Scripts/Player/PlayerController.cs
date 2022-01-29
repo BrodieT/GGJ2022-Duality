@@ -19,6 +19,8 @@ public class PlayerController : MonoBehaviour
         {
             CharacterSwapParticles.Instance.SetParticleStartingPoint(controllableCharacters[currentCharacter].transform.position);
         }
+
+        controllableCharacters[currentCharacter].SetIsMoving(true);
     }
 
     // Update is called once per frame
