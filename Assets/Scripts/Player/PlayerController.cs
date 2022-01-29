@@ -52,12 +52,16 @@ public class PlayerController : MonoBehaviour
 
     private void SwitchCharacter()
     {
+        controllableCharacters[currentCharacter].SetIsMoving(false);
+
         currentCharacter++;
         
         if(currentCharacter >= controllableCharacters.Count)
         {
             currentCharacter = 0;
         }
+
+        controllableCharacters[currentCharacter].SetIsMoving(true);
 
         if (CharacterSwapParticles.Instance != null)
         {
