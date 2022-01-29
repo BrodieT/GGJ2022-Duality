@@ -23,6 +23,9 @@ public class SceneHandler : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
 
+        smallSpawn = GameObject.FindGameObjectWithTag("SmallSpawn").transform;
+        bigSpawn = GameObject.FindGameObjectWithTag("BigSpawn").transform;
+
         anim.SetTrigger("FadeIn");
 
         yield return new WaitForSeconds(1);
@@ -37,6 +40,10 @@ public class SceneHandler : MonoBehaviour
     private Animator anim = default;
 
     private bool isLoading = false;
+
+    private Transform smallSpawn = default;
+
+    private Transform bigSpawn = default;
 
     // Start is called before the first frame update
     void Start()
@@ -54,4 +61,14 @@ public class SceneHandler : MonoBehaviour
     {
         return isLoading;
     }
+
+    public Transform GetSmallSpawn()
+	{
+        return smallSpawn;
+	}
+
+    public Transform GetBigSpawn()
+	{
+        return bigSpawn;
+	}
 }
