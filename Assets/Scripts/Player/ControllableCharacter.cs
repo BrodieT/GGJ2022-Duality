@@ -27,6 +27,7 @@ public class ControllableCharacter : MonoBehaviour
     private bool prevIsGrounded = false; //Remembers the grounded state from the previous frame
     private bool isJumping = false; //Tracks whether the character is in the process of a jump - determines the difference between a jump & walking off a ledge
 
+    private Vector2 externalForce = new Vector2();
 
     // Start is called before the first frame update
     void Start()
@@ -184,7 +185,13 @@ public class ControllableCharacter : MonoBehaviour
         }
 
         //Move the character
-        rb.velocity = new Vector2(direction * settings.characterMoveSpeed, rb.velocity.y);
+        rb.velocity = new Vector2(direction * settings.characterMoveSpeed, rb.velocity.y) + externalForce;
+        externalForce = Vector2.zero;
+    }
+
+    public void ApplyForce(Vector2 force)
+    {
+        externalForce = force;
     }
 
     private void FlipSprites(bool flip)
