@@ -22,7 +22,7 @@ MonoBehaviour:
   jumpAmount: 0
   groundCheckRememberTime: 0.5
   jumpPressRememberTime: 0.25
-  flipSprites: 1
+  flipSprites: 0
   walkAnim: Walk
   jumpAnim: 
   landAnim: 

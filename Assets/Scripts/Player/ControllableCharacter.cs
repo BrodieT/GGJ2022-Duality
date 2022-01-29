@@ -17,7 +17,9 @@ public class ControllableCharacter : MonoBehaviour
 
     private Rigidbody2D rb = default; //Local cache of rigidbody component
     private Collider2D col = default; //Local cache of collider component
-    
+    private SpriteRenderer[] sprites;
+
+
     private float groundedMemoryTimer = 0.0f; //The timer tracking whether the player was recently grounded
     private float jumpPressMemoryTimer = 0.0f; //The timer tracking if the jump button was recently pressed
 
@@ -38,6 +40,7 @@ public class ControllableCharacter : MonoBehaviour
         //Cache the rigidbody and colliders - safe to use GetComponent as they are required by this script
         rb = GetComponent<Rigidbody2D>();
         col = GetComponent<Collider2D>();
+        sprites = GetComponentsInChildren<SpriteRenderer>();
 
         rb.gravityScale = settings.gravityScale;
     }
@@ -172,8 +175,27 @@ public class ControllableCharacter : MonoBehaviour
             anim.SetBool(settings.walkAnim, direction != 0);
         }
 
+        //if moving then update the sprites facing direction
+        //otherwise leave them facing the last move direction
+        if (direction != 0)
+        {
+            FlipSprites((settings.flipSprites && direction < 0) ||
+                (!settings.flipSprites && direction > 0));
+        }
+
         //Move the character
         rb.velocity = new Vector2(direction * settings.characterMoveSpeed, rb.velocity.y);
+    }
+
+    private void FlipSprites(bool flip)
+    {
+        if(sprites.Length > 0)
+        {
+            foreach (SpriteRenderer sprite in sprites)
+            {
+                sprite.flipX = flip;
+            }
+        }
     }
 
     //This function draws debug gizmos for this character
