@@ -185,10 +185,19 @@ public class ControllableCharacter : MonoBehaviour
         }
 
         //Move the character
-        rb.velocity = new Vector2(direction * settings.characterMoveSpeed, rb.velocity.y) + externalForce;
+
+        if ((externalForce.x > 0 && direction < 0) || (externalForce.x < 0 && direction > 0))
+        {
+            rb.velocity = externalForce;
+        }
+        else
+        {
+            rb.velocity = new Vector2(direction * settings.characterMoveSpeed, rb.velocity.y) + externalForce;
+        }
         externalForce = Vector2.zero;
     }
 
+   
     public void ApplyForce(Vector2 force)
     {
         externalForce = force;
