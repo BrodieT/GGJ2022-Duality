@@ -17,6 +17,9 @@ public class MoveableBox : MonoBehaviour
     private Rigidbody2D rb = default;
 
     private bool isPushing = false;
+
+    private Animator anim = default;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -44,6 +47,10 @@ public class MoveableBox : MonoBehaviour
     public void StopPushingSound()
     {
         source.Stop();
+        if(anim != null)
+		{
+            ChangePushingAnim(false);
+        }
     }
 
     public void AllowPushing(bool set)
@@ -60,8 +67,14 @@ public class MoveableBox : MonoBehaviour
 		{
             rb.constraints = RigidbodyConstraints2D.FreezeAll;
 		}
+
     }
 
+    void ChangePushingAnim(bool set)
+	{
+        Debug.Log("CALLED");
+        anim.SetBool("Push", set);
+	}
 
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
@@ -74,7 +87,13 @@ public class MoveableBox : MonoBehaviour
             {
                 if (character.GetSettings().weightThreshold >= entity.weight && !isPushing)
                 {
+                    if(anim == null)
+					{
+                        anim = character.GetComponentInChildren<Animator>();
+					}
+
                     AllowPushing(true);
+                    ChangePushingAnim(true);
                     isPushing = true;
                 }
                 else
