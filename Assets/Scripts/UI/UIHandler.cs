@@ -7,7 +7,7 @@ using UnityEngine.UI;
 [System.Serializable]
 public class MenuData
 {
-    public enum Menus { MAINMENU, SETTINGS, CONTROLS, GAMEUI, CREDITS, WIN, LEVELSELECT, PAUSE, BACK}
+    public enum Menus { MAINMENU, SETTINGS, CONTROLS, GAMEUI, CREDITS, WIN, LEVELSELECT, PAUSE, BACK, NULL}
     public Menus menu = default;
     public GameObject menuObj = default;
     public bool allowPlayerMovement = false;

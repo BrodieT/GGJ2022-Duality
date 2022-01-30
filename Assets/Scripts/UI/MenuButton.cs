@@ -20,7 +20,23 @@ public class MenuButton : MonoBehaviour, IPointerEnterHandler
         }
         else
         {
-            bttn.onClick.AddListener(delegate { UIHandler.Instance.SwitchMenu(menu); });
+            bttn.onClick.AddListener(delegate { SwitchMenu(); });
+        }
+    }
+
+    void SwitchMenu()
+	{
+        SceneSwitchButton b = default;
+        TryGetComponent<SceneSwitchButton>(out b);
+
+        if (b != null)
+        {
+            SceneHandler.Instance.LoadNewScene(b.GetSceneName());
+            SceneHandler.Instance.SetMenuToLoad(menu);
+        }
+		else
+		{
+            UIHandler.Instance.SwitchMenu(menu);
         }
     }
 

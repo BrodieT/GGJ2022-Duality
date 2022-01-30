@@ -13,9 +13,16 @@ public class SceneHandler : MonoBehaviour
 
         anim.SetTrigger("FadeOut");
 
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
 
         SceneManager.LoadScene(sceneToLoad, LoadSceneMode.Single);
+
+        if (menu != MenuData.Menus.NULL)
+        {
+            UIHandler.Instance.SwitchMenu(menu);
+        }
+
+        yield return new WaitForSeconds(1);
 
         //Wait until the scene is fully loaded before attempting anything
         while (!SceneManager.GetSceneByName(sceneToLoad).isLoaded)
@@ -29,6 +36,7 @@ public class SceneHandler : MonoBehaviour
 
         isLoading = false;
 
+        menu = MenuData.Menus.NULL;
     }
 
     private string sceneToLoad = default;
@@ -42,6 +50,8 @@ public class SceneHandler : MonoBehaviour
 
     private Transform bigSpawn = default;
 
+    private MenuData.Menus menu = MenuData.Menus.NULL;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -54,6 +64,10 @@ public class SceneHandler : MonoBehaviour
         StartCoroutine(LoadScene());
     }
 
+    public void SetMenuToLoad(MenuData.Menus m)
+	{
+        menu = m;
+	}
     public bool GetIfLoading()
     {
         return isLoading;

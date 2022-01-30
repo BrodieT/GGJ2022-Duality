@@ -14,4 +14,9 @@ public class SceneSwitchButton : MonoBehaviour
         Button bttn = GetComponent<Button>();
         bttn.onClick.AddListener(delegate { SceneHandler.Instance.LoadNewScene(sceneToLoad); });
     }
+
+    public string GetSceneName()
+	{
+        return sceneToLoad;
+	}
 }
