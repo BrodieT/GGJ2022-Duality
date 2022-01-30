@@ -69,6 +69,11 @@ public class UIHandler : MonoBehaviour
         }
 
         SwitchMenu(currentMenu.menu);
+
+        mixer.SetFloat("MasterVolume", masterSlider.value);
+        mixer.SetFloat("EffectsVolume", effectsSlider.value);
+        mixer.SetFloat("UIVolume", UISlider.value);
+        mixer.SetFloat("MusicVolume", MusicSlider.value);
     }
 
     public void SwitchMenu(MenuData.Menus m)
