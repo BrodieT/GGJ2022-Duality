@@ -9,7 +9,18 @@ public class PressurePad : MonoBehaviour
 
     private int currentWeight = 0; // How much weight is currently on the pressure pad
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    [SerializeField]
+    private AudioSource source = default;
+
+    [SerializeField]
+    private AudioClip clip = default;
+
+	private void Start()
+	{
+        source.clip = clip;
+	}
+
+	private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.TryGetComponent<Entity>(out Entity entity))
         {
@@ -19,6 +30,8 @@ public class PressurePad : MonoBehaviour
             {
                 platform.UpdateHeight(currentWeight);
             }
+
+            source.Play();
         }
     }
 
@@ -32,6 +45,8 @@ public class PressurePad : MonoBehaviour
             {
                 platform.UpdateHeight(currentWeight);
             }
+
+            source.Play();
         }
     }
 }

@@ -34,7 +34,6 @@ public class Fans : MonoBehaviour
     [SerializeField, Tooltip("What is the maximum weight per entity can the wind push")]
     private int maxEntityWeight = 1;
 
-
     private void Start()
     {
         if (TryGetComponent<BoxCollider2D>(out BoxCollider2D col))
@@ -44,7 +43,6 @@ public class Fans : MonoBehaviour
                 forceDirection.x != 0.0f ? Mathf.Abs(forceDirection.x) * maxDistance : col.size.x,
                 forceDirection.y != 0.0f ? Mathf.Abs(forceDirection.y) * maxDistance : col.size.y);
         }
-       
     }
 
    
