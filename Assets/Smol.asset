@@ -19,7 +19,7 @@ MonoBehaviour:
   groundCheckRadius: 0.3
   groundLayer:
     serializedVersion: 2
-    m_Bits: 55
+    m_Bits: 311
   jumpAmount: 10
   groundCheckRememberTime: 0.5
   jumpPressRememberTime: 0.25
