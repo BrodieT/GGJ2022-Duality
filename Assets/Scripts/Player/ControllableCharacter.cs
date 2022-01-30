@@ -201,7 +201,18 @@ public class ControllableCharacter : MonoBehaviour
 
     }
 
-   
+   public void StopHorizontalMovement()
+    {
+        rb.velocity = new Vector2(0.0f, rb.velocity.y);
+
+        //If we can animate this character with a walk animation
+        if (anim && settings.walkAnim != "")
+        {
+            //Set the walk param accordingly 
+            anim.SetBool(settings.walkAnim, false);
+        }
+    }
+
     public void ApplyForce(Vector2 force)
     {
         externalForce = force;

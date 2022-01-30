@@ -65,6 +65,7 @@ public class PlayerController : MonoBehaviour
     private void SwitchCharacter()
     {
         controllableCharacters[currentCharacter].SetIsMoving(false);
+        controllableCharacters[currentCharacter].StopHorizontalMovement();
 
         currentCharacter++;
         

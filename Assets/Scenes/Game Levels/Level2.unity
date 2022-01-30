@@ -888,6 +888,14 @@ PrefabInstance:
       propertyPath: maxWeightCapacity
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4666844575934982315, guid: 03c8176a841656846ab196af2f8e7afb, type: 3}
+      propertyPath: heightIncrements.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4666844575934982315, guid: 03c8176a841656846ab196af2f8e7afb, type: 3}
+      propertyPath: heightIncrements.Array.data[0]
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4666844575934982318, guid: 03c8176a841656846ab196af2f8e7afb, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.9

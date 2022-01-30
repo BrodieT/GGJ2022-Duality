@@ -10,14 +10,34 @@ public class DoorManager : MonoBehaviour
     [SerializeField]
     private string sceneToLoad = default;
 
+
+    private bool buffGuy = false;
+    private bool smolGuy = false;
+
     public void OnEnterDoor(CharacterType characterType)
     {
         Debug.Log(characterType.ToString() + " entered door");
+
+        if (characterType == CharacterType.Buff)
+            buffGuy = true;
+        else if (characterType == CharacterType.Smol)
+            smolGuy = true;
 
         //TODO
         //Handle endgame event
         CheckBothEntered();
     }
+
+    public void OnExitDoor(CharacterType characterType)
+    {
+        Debug.Log(characterType.ToString() + " entered door");
+
+        if (characterType == CharacterType.Buff)
+            buffGuy = false;
+        else if (characterType == CharacterType.Smol)
+            smolGuy = false;
+    }
+
 
     public void Unlock(CharacterType keyType)
     {
@@ -29,19 +49,24 @@ public class DoorManager : MonoBehaviour
 
     void CheckBothEntered()
 	{
-        if(buffKey && smolKey)
+        if(buffKey && smolKey && buffGuy && smolGuy)
 		{
             SceneHandler.Instance.LoadNewScene(sceneToLoad);
 		}
 	}
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (buffKey && smolKey)
+        if (collision.TryGetComponent<ControllableCharacter>(out ControllableCharacter character))
         {
-            if (collision.TryGetComponent<ControllableCharacter>(out ControllableCharacter character))
-            {
-                OnEnterDoor(character.GetCharacterType());
-            }
+            OnEnterDoor(character.GetCharacterType());
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.TryGetComponent<ControllableCharacter>(out ControllableCharacter character))
+        {
+            OnExitDoor(character.GetCharacterType());
         }
     }
 }
