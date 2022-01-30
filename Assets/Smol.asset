@@ -15,11 +15,11 @@ MonoBehaviour:
   characterType: 1
   characterMoveSpeed: 5
   gravityScale: 2
-  feetPosition: {x: 0, y: 0.4, z: 0}
-  groundCheckRadius: 0.5
+  feetPosition: {x: 0, y: 0, z: 0}
+  groundCheckRadius: 0.3
   groundLayer:
     serializedVersion: 2
-    m_Bits: 119
+    m_Bits: 55
   jumpAmount: 10
   groundCheckRememberTime: 0.5
   jumpPressRememberTime: 0.25
