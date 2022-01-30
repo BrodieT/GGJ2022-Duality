@@ -48,7 +48,7 @@ public class ControllableCharacter : MonoBehaviour
         rb.gravityScale = settings.gravityScale;
     }
 
-  
+
 
     private void Update()
     {

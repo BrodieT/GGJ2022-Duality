@@ -26,11 +26,14 @@ public class AudioHelper : MonoBehaviour
 
     public void PlayClip()
 	{
-        if(randomPitch)
-		{
-            source.pitch = Random.Range(lowerPitch, higherPitch);
-		}
+        if (UIHandler.Instance.GetCharacterMovement())
+        {
+            if (randomPitch)
+            {
+                source.pitch = Random.Range(lowerPitch, higherPitch);
+            }
 
-        source.Play();
+            source.Play();
+        }
 	}
 }
