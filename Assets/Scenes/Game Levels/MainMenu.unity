@@ -4459,10 +4459,10 @@ RectTransform:
   m_Father: {fileID: 1166725962}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 300, y: 200}
+  m_SizeDelta: {x: -200, y: -150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &899891828
 MonoBehaviour:
@@ -4494,7 +4494,13 @@ MonoBehaviour:
     Space
     - Jump (only the small character)
 
-    Esc/P - Pause'
+    Esc/P - Pause
+
+
+    Goal:
+
+    Get both
+    characters to the purple door to complete the level!'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9d8116175a331b74fb58a68049c9f45c, type: 2}
   m_sharedMaterial: {fileID: -6957816730672245791, guid: 9d8116175a331b74fb58a68049c9f45c, type: 2}
@@ -4521,7 +4527,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 23
+  m_fontSize: 24.85
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
