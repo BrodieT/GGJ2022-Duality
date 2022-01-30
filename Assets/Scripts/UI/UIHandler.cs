@@ -41,6 +41,10 @@ public class UIHandler : MonoBehaviour
     [SerializeField]
     private Slider UISlider = default;
 
+
+    [SerializeField]
+    private Slider MusicSlider = default;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -132,5 +136,10 @@ public class UIHandler : MonoBehaviour
     public void UpdateUIVolume()
     {
         mixer.SetFloat("UIVolume", UISlider.value);
+    }
+
+    public void UpdateMusicVolume()
+    {
+        mixer.SetFloat("MusicVolume", MusicSlider.value);
     }
 }
