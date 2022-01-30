@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2868031603336821402}
   - component: {fileID: 2868031603336821405}
   - component: {fileID: 2868031603336821404}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: SmolBoi
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97,7 +97,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2868031603943454447}
   - component: {fileID: 2868031603943454444}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Graphic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -176,6 +176,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2868031603336821403}
     m_Modifications:
+    - target: {fileID: 7740936419363750255, guid: 840d90daf6cf46b4bb64aa9dbfbdcff3, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 7740936420124443032, guid: 840d90daf6cf46b4bb64aa9dbfbdcff3, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -223,6 +227,14 @@ PrefabInstance:
     - target: {fileID: 7740936420124443035, guid: 840d90daf6cf46b4bb64aa9dbfbdcff3, type: 3}
       propertyPath: m_Name
       value: SmollCharacter
+      objectReference: {fileID: 0}
+    - target: {fileID: 7740936420124443035, guid: 840d90daf6cf46b4bb64aa9dbfbdcff3, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7740936420706692608, guid: 840d90daf6cf46b4bb64aa9dbfbdcff3, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 840d90daf6cf46b4bb64aa9dbfbdcff3, type: 3}
