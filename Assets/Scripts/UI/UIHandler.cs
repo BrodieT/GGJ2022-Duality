@@ -45,6 +45,13 @@ public class UIHandler : MonoBehaviour
     [SerializeField]
     private Slider MusicSlider = default;
 
+    [SerializeField]
+    private AudioSource source = default;
+
+    [SerializeField]
+    private AudioClip menuChange = default;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -87,6 +94,10 @@ public class UIHandler : MonoBehaviour
         {
             AudioHandler.Instance.PlayButtonHover();
         }
+
+        source.clip = menuChange;
+        source.pitch = Random.Range(0.8f, 1.2f);
+        source.Play();
     }
 
     IEnumerator HideCurrentMenu(GameObject g)
