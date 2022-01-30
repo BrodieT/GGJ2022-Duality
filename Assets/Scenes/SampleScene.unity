@@ -1986,5 +1986,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Doors n keys
       objectReference: {fileID: 0}
+    - target: {fileID: 7021930942600786878, guid: 2758c08030faa88409d7965c418ec10a, type: 3}
+      propertyPath: sceneToLoad
+      value: Level2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2758c08030faa88409d7965c418ec10a, type: 3}

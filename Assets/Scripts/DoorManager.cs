@@ -7,13 +7,16 @@ public class DoorManager : MonoBehaviour
     private bool buffKey = false;
     private bool smolKey = false;
 
-    
+    [SerializeField]
+    private string sceneToLoad = default;
+
     public void OnEnterDoor(CharacterType characterType)
     {
         Debug.Log(characterType.ToString() + " entered door");
 
         //TODO
         //Handle endgame event
+        CheckBothEntered();
     }
 
     public void Unlock(CharacterType keyType)
@@ -24,6 +27,13 @@ public class DoorManager : MonoBehaviour
             smolKey = true;
     }
 
+    void CheckBothEntered()
+	{
+        if(buffKey && smolKey)
+		{
+            SceneHandler.Instance.LoadNewScene(sceneToLoad);
+		}
+	}
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (buffKey && smolKey)

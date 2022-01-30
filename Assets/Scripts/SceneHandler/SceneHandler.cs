@@ -23,15 +23,6 @@ public class SceneHandler : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
 
-        if (GameObject.FindGameObjectWithTag("SmallSpawn").transform != null)
-        {
-            smallSpawn = GameObject.FindGameObjectWithTag("SmallSpawn").transform;
-        }
-        if (GameObject.FindGameObjectWithTag("BigSpawn").transform)
-        {
-            bigSpawn = GameObject.FindGameObjectWithTag("BigSpawn").transform;
-        }
-
         anim.SetTrigger("FadeIn");
 
         yield return new WaitForSeconds(1);
