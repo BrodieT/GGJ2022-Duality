@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
     {
         if (CharacterSwapParticles.Instance != null)
         {
-            CharacterSwapParticles.Instance.SetParticleStartingPoint(controllableCharacters[currentCharacter].transform.position);
+            CharacterSwapParticles.Instance.SetParticleStartingPoint(controllableCharacters[currentCharacter].transform);
         }
 
         controllableCharacters[currentCharacter].SetIsMoving(true);

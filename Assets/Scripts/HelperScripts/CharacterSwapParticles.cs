@@ -16,6 +16,8 @@ public class CharacterSwapParticles : MonoBehaviour
     private Transform smallCharacter = default;
     private Transform bigCharacter = default;
 
+    private Vector3 startingPos = default;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,13 +26,17 @@ public class CharacterSwapParticles : MonoBehaviour
         particleEffect.Stop();
     }
 
-    public void SetParticleStartingPoint(Vector3 pos)
+    public void SetParticleStartingPoint(Transform pos)
 	{
-        particleEffect.gameObject.transform.position = pos;
+        currentCharacter = pos;
+        startingPos = pos.localPosition;
+        particleEffect.gameObject.transform.position = startingPos;
 	}
 
     public IEnumerator SwapCharacter(Transform nextCharacter)
     {
+        particleEffect.gameObject.transform.position = currentCharacter.localPosition;
+
         particleEffect.Play();
 
         currentCharacter = nextCharacter;
