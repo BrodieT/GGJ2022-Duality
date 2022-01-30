@@ -15,6 +15,12 @@ public class AudioHandler : MonoBehaviour
     [SerializeField]
     private AudioSource UISource = default;
 
+    [SerializeField]
+    private AudioSource source = default;
+
+    [SerializeField]
+    private AudioClip keyCollect = default;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,4 +44,10 @@ public class AudioHandler : MonoBehaviour
             UISource.Play();
         }
     }
+
+    public void CollectKey()
+	{
+        source.clip = keyCollect;
+        source.Play();
+	}
 }

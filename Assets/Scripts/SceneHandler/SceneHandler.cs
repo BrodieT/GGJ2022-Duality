@@ -9,6 +9,8 @@ public class SceneHandler : MonoBehaviour
 
     IEnumerator LoadScene()
     {
+        UIHandler.Instance.SetCharacterMovement(false);
+
         isLoading = true;
 
         anim.SetTrigger("FadeOut");
@@ -33,6 +35,8 @@ public class SceneHandler : MonoBehaviour
         anim.SetTrigger("FadeIn");
 
         yield return new WaitForSeconds(1);
+
+        UIHandler.Instance.SetCharacterMovement(true);
 
         isLoading = false;
 

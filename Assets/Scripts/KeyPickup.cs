@@ -19,6 +19,12 @@ public class KeyPickup : MonoBehaviour
                 if (characterType == character.GetCharacterType())
                 {
                     door.Unlock(characterType);
+
+                    if (AudioHandler.Instance != null)
+                    {
+                        AudioHandler.Instance.CollectKey();
+                    }
+
                     Destroy(gameObject);
                 }
             }

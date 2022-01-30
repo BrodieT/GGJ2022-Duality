@@ -51,6 +51,7 @@ public class UIHandler : MonoBehaviour
     [SerializeField]
     private AudioClip menuChange = default;
 
+    private bool movement = false;
 
     // Start is called before the first frame update
     void Start()
@@ -82,6 +83,8 @@ public class UIHandler : MonoBehaviour
                 {
                     StartCoroutine(HideCurrentMenu(currentMenu.menuObj));
                 }
+
+                movement = d.allowPlayerMovement;
 
                 d.menuObj.SetActive(true);
                 currentMenu = d;
@@ -129,9 +132,14 @@ public class UIHandler : MonoBehaviour
         SwitchMenu(previousMenu.menu);
 	}
 
+    public void SetCharacterMovement(bool set)
+	{
+        movement = set;
+	}
+
     public bool GetCharacterMovement()
 	{
-        return currentMenu.allowPlayerMovement;
+        return movement;
 	}
 
     public void UpdateMasterVolume()

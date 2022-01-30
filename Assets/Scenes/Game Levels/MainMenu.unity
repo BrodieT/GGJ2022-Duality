@@ -2721,6 +2721,8 @@ MonoBehaviour:
   buttonHover: {fileID: 8300000, guid: f15bd97109be8b34c936d3dc98906d7f, type: 3}
   buttonClick: {fileID: 8300000, guid: a92f1d524930d994d92458369c7e2f8b, type: 3}
   UISource: {fileID: 396044473}
+  source: {fileID: 396044473}
+  keyCollect: {fileID: 8300000, guid: 1439db43a41e964489ef621392534df4, type: 3}
 --- !u!1 &422154787
 GameObject:
   m_ObjectHideFlags: 0
