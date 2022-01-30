@@ -6,18 +6,14 @@ public class MovablePlatform : MonoBehaviour
 {
       [SerializeField, Tooltip("How fast the platform will move")]
     private float platformSpeed = 3.0f;
-    [SerializeField, Tooltip("How much weight is required for this platform to reach the maximum height")]
-    private int maxWeightCapacity = 3;
-    [SerializeField, Tooltip("What is the maximum height this platform can reach")]
-    private float maxHeight = 10.0f;
+    [SerializeField, Tooltip("The height levels for each weight unit applied to the pressure pad relative to the starting position. Each entry represents a level that can be reached")]
+    private List<float> heightIncrements = new List<float>();
 
-    private float heightStep = 0.0f;
     private Vector3 startingPos = new Vector3();
     private float targetHeight = 0.0f;
     private float currentHeight = 0.0f;
     private void Start()
     {
-        heightStep = maxHeight / maxWeightCapacity;
         startingPos = transform.position;
         currentHeight = startingPos.y;
         targetHeight = startingPos.y;
@@ -32,17 +28,29 @@ public class MovablePlatform : MonoBehaviour
 
     public void UpdateHeight(int weight)
     {
-        targetHeight = startingPos.y + Mathf.Clamp((Mathf.Clamp(weight, 0, maxWeightCapacity) * heightStep), 0.0f, maxHeight);
+        int index = Mathf.Min(weight, heightIncrements.Count) - 1;
+
+        if (index < 0)
+            targetHeight = startingPos.y;
+        else
+            targetHeight = startingPos.y + heightIncrements[index];
+        //targetHeight = startingPos.y + Mathf.Clamp((Mathf.Clamp(weight, 0, maxWeightCapacity) * heightStep), 0.0f, maxHeight);
     }
 
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        float hStep = maxHeight / maxWeightCapacity;
+        //float hStep = maxHeight / maxWeightCapacity;
 
-        for (int i = 0; i <= maxWeightCapacity; i++)
+        //for (int i = 0; i <= maxWeightCapacity; i++)
+        //{
+        //    Vector3 target = transform.position + (transform.up * (hStep * i));
+        //    Gizmos.DrawLine(target + Vector3.right, target + Vector3.left);
+        //}
+
+        foreach (float item in heightIncrements)
         {
-            Vector3 target = transform.position + (transform.up * (hStep * i));
+            Vector3 target = transform.position + (transform.up * (item));
             Gizmos.DrawLine(target + Vector3.right, target + Vector3.left);
         }
     }
