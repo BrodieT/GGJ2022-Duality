@@ -46,3 +46,6 @@ TagManager:
   - name: BuffCharacter
     uniqueID: 1193645423
     locked: 0
+  - name: SmollCharacter
+    uniqueID: 3706979303
+    locked: 0

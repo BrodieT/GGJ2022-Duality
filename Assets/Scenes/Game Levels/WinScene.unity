@@ -1608,8 +1608,8 @@ GameObject:
   - component: {fileID: 1349980730}
   - component: {fileID: 1349980729}
   - component: {fileID: 1349980728}
-  - component: {fileID: 1349980727}
   - component: {fileID: 1349980731}
+  - component: {fileID: 1349980727}
   m_Layer: 0
   m_Name: MainMenu
   m_TagString: Untagged
